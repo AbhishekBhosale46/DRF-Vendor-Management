@@ -20,14 +20,14 @@ class Vendor(models.Model):
 
 class PurchaseOrder(models.Model):
     po_number = models.CharField(
-        max_length=50,
+        max_length=50, 
         unique=True,
         primary_key=True,
     )
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
     order_date = models.DateTimeField()
     expected_delivery_date = models.DateTimeField()
-    actual_delivery_date = models.DateTimeField()
+    actual_delivery_date = models.DateTimeField(null=True, blank=True)
     items = models.JSONField()
     quantity = models.IntegerField()
     status = models.CharField(max_length=20)

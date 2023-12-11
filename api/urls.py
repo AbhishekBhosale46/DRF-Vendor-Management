@@ -3,9 +3,9 @@ from .views import VendorListCreate, VendorDetail, VendorPerformanceDetail, Purc
 
 urlpatterns = [
     path('vendors/', view=VendorListCreate.as_view()),
-    path('vendors/<uuid:vendor_id>/', view=VendorDetail.as_view()),
-    path('vendors/<uuid:vendor_id>/performance', view=VendorPerformanceDetail.as_view()),
+    path('vendors/<str:vendor_code>/', view=VendorDetail.as_view()),
+    path('vendors/<str:vendor_code>/performance', view=VendorPerformanceDetail.as_view()),
     path('purchase_orders/', view=PurchaseOrderListCreate.as_view()),
-    path('purchase_orders/<uuid:po_id>/', view=PurchaseOrderDetail.as_view()),
-    path('purchase_orders<uuid:po_id>/acknowledge/', view=acknowledgePurchaseOrder),
+    path('purchase_orders/<str:po_number>/', view=PurchaseOrderDetail.as_view()),
+    path('purchase_orders<str:po_number>/acknowledge/', view=acknowledgePurchaseOrder),
 ]
