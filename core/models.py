@@ -8,6 +8,7 @@ class Vendor(models.Model):
         max_length=50,
         unique=True,
         primary_key=True,
+        blank=False
     )
     name = models.CharField(max_length=255)
     contact_details = models.TextField()
@@ -25,6 +26,7 @@ class PurchaseOrder(models.Model):
         max_length=50, 
         unique=True,
         primary_key=True,
+        blank=False
     )
     vendor = models.ForeignKey(Vendor, on_delete=models.CASCADE)
     order_date = models.DateTimeField()

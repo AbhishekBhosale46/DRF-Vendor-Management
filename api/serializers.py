@@ -1,10 +1,10 @@
 from django.contrib.auth import get_user_model, authenticate
 from rest_framework import serializers
-from core.models import Vendor, PurchaseOrder, HistoricalPerformance
+from core import models
 
 class VendorSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Vendor
+        model = models.Vendor
         fields = ['vendor_code', 'name', 'contact_details', 'address']
 
     def update(self, instance, validated_data):
@@ -15,13 +15,13 @@ class VendorSerializer(serializers.ModelSerializer):
 
 class VendorPerformanceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Vendor
+        model = models.Vendor
         fields = ['vendor_code', 'on_time_delivery_rate', 'quality_rating_average', 'average_response_time', 'fulfillment_rate']
         read_only_fields = ['on_time_delivery_rate', 'quality_rating_average', 'average_response_time', 'fulfillment_rate']
 
 class PurchaseOrderSerializer(serializers.ModelSerializer):
     class Meta:
-        model = PurchaseOrder
+        model = models.PurchaseOrder
         fields = '__all__'
         read_only_fields = ['issue_date', 'acknowledgment_date']
     
@@ -33,7 +33,7 @@ class PurchaseOrderSerializer(serializers.ModelSerializer):
 
 class HistoricalPerformanceSerializer(serializers.ModelSerializer):
     class Meta:
-        model = HistoricalPerformance
+        model = models.HistoricalPerformance
         fields = '__all__'
 
 class UserSerializer(serializers.ModelSerializer):

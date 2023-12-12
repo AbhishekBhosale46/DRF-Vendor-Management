@@ -10,6 +10,6 @@ urlpatterns = [
     path('purchase_orders/', view=views.PurchaseOrderListCreate.as_view()),
     path('purchase_orders/<str:po_number>/', view=views.PurchaseOrderDetail.as_view()),
     path('purchase_orders<str:po_number>/acknowledge/', view=views.acknowledgePurchaseOrder),
-    path('user/create', view=views.CreateUserView.as_view(), name='create'),
-    path('user/token/', view=views.CreateTokenView.as_view(), name='token'),
+    path('user/create', view=views.CreateUserView.as_view()),
+    path('user/token/', view=views.CreateTokenView.as_view()),
 ]
